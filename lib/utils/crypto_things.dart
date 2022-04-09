@@ -17,7 +17,6 @@ class CryptoUtils {
   static HashWithNonce getSHA256WithDifficulty(
       {required String data, required int difficulty}) {
     if (difficulty <= 0) throw Exception('Difficulty must be greater than 0');
-
     // this regular expression will check the number of leading zeros in the hash
     String regex = '^0{$difficulty}';
     int nonce = 0;
