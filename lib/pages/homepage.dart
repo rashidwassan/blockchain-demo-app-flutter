@@ -1,7 +1,7 @@
-import 'package:blockchain_demo_flutter/models/hash_with_nonce.dart';
+import 'package:blockchain_demo_flutter/components/homepage_grid_tile.dart';
+import 'package:blockchain_demo_flutter/providers/homepage_items_provider.dart';
 import 'package:flutter/material.dart';
-
-import '../utils/crypto_things.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -9,16 +9,16 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final HashWithNonce hashWithNonce =
-        CryptoUtils.getSHA256WithDifficulty(data: 'Hello World', difficulty: 4);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Blockchain Demo'),
       ),
-      body: Center(
-        child: Text(
-          'SHA256: ${hashWithNonce.hash}\nNonce: ${hashWithNonce.nonce}',
-          style: const TextStyle(fontSize: 24),
+      body: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          children: const [
+            HomePageGridVew(),
+          ],
         ),
       ),
     );
@@ -30,6 +30,19 @@ class HomePageGridVew extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Consumer<HomePageItemsProvider>(
+      builder: (context, itemsData, child) => Expanded(
+        child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 0.95,
+          ),
+          itemCount: itemsData.items.length,
+          itemBuilder: (context, index) {
+            return HomePageGridTile(item: itemsData.items[index]);
+          },
+        ),
+      ),
+    );
   }
 }

@@ -6,4 +6,5 @@ class Images {
 
   // icon paths
   static const String hash = 'assets/icons/hash.png';
+  static const String block = 'assets/icons/block.png';
 }
