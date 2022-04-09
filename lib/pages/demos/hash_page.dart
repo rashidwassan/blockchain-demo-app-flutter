@@ -38,9 +38,24 @@ class _HashPageState extends State<HashPage> {
               const SizedBox(
                 height: 24,
               ),
-              Text(
-                'Hash:\n$hash',
-                textAlign: TextAlign.center,
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(width: 0.2, color: Colors.black)),
+                child: Column(
+                  children: [
+                    const Text(
+                      'Hash',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    SelectableText(
+                      '\n$hash',
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
               ),
             ],
           )),

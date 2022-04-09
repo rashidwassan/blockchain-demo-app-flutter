@@ -14,7 +14,7 @@ class DataInputField extends StatelessWidget {
       maxLines: 4,
       decoration: InputDecoration(
           labelText: title,
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12))),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
       onChanged: onChanged,
       controller: controller,
     );
