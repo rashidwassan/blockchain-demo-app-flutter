@@ -21,13 +21,11 @@ class CryptoUtils {
     // this regular expression will check the number of leading zeros in the hash
     String regex = '^0{$difficulty}';
     int nonce = 0;
-    List<int> bytes;
-    Digest digest;
+    String hash;
     for (nonce = 0;; nonce++) {
-      bytes = utf8.encode(data + nonce.toString());
-      digest = sha256.convert(bytes);
-      if (RegExp(regex).hasMatch(digest.toString())) break;
+      hash = getSHA256(data + nonce.toString());
+      if (RegExp(regex).hasMatch(hash)) break;
     }
-    return HashWithNonce(digest.toString(), nonce);
+    return HashWithNonce(hash, nonce);
   }
 }
