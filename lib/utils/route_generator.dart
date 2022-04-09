@@ -12,7 +12,7 @@ class RouteGenerator {
       case HomePage.routeName:
         return MaterialPageRoute(builder: (_) => const HomePage());
       case HashPage.routeName:
-        return MaterialPageRoute(builder: (_) => const HashPage());
+        return MaterialPageRoute(builder: (_) => HashPage());
 
       default:
         return MaterialPageRoute(builder: ((context) => const HomePage()));
