@@ -1,5 +1,6 @@
 import 'package:blockchain_demo_flutter/components/data_input_fields.dart';
 import 'package:blockchain_demo_flutter/models/hash_with_nonce.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/crypto_things.dart';
@@ -14,12 +15,14 @@ class BlockPage extends StatefulWidget {
 }
 
 class _HashPageState extends State<BlockPage> {
-  getHash() {
-    setState(() {
-      _hashWithNonce = CryptoUtils.getSHA256WithDifficulty(
-        data: _contentController.text,
-        difficulty: difficulty.toInt(),
-      );
+  getHash() async {
+    await compute(CryptoUtils.getSHA256WithDifficulty, {
+      'data': _contentController.text,
+      'difficulty': difficulty.toInt(),
+    }).then((result) {
+      setState(() {
+        _hashWithNonce = result;
+      });
     });
   }
 
@@ -37,9 +40,7 @@ class _HashPageState extends State<BlockPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(
-                  height: 12,
-                ),
+                const SizedBox(height: 12),
                 Container(
                   decoration: BoxDecoration(
                       color: Colors.teal,
@@ -53,30 +54,22 @@ class _HashPageState extends State<BlockPage> {
                         fontWeight: FontWeight.bold, color: Colors.white),
                   ),
                 ),
-                const SizedBox(
-                  height: 24,
-                ),
+                const SizedBox(height: 24),
                 Text(
                   'Enter the content of the block',
                   style: Theme.of(context).textTheme.headline6,
                 ),
-                const SizedBox(
-                  height: 12,
-                ),
+                const SizedBox(height: 12),
                 DataInputField(
                     title: 'Data',
                     controller: _contentController,
                     onChanged: (value) {}),
-                const SizedBox(
-                  height: 24,
-                ),
+                const SizedBox(height: 24),
                 Text(
                   'Hash:\n${_hashWithNonce.hash}',
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(
-                  height: 32,
-                ),
+                const SizedBox(height: 32),
                 const Spacer(),
                 const Text('Select Difficulty:'),
                 Slider(
@@ -103,9 +96,7 @@ class _HashPageState extends State<BlockPage> {
                   ),
                   color: Theme.of(context).primaryColor,
                 ),
-                const SizedBox(
-                  height: 24,
-                ),
+                const SizedBox(height: 24),
               ],
             ),
           ),
