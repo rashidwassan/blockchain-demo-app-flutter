@@ -31,7 +31,7 @@ class HomePageGridTile extends StatelessWidget {
               Text(
                 item.title,
                 style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
               ),
               const SizedBox(height: 4),
               Text(
