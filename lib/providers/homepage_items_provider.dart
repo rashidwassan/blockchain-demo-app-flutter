@@ -1,4 +1,5 @@
 import 'package:blockchain_demo_flutter/models/homepage_grid_item.dart';
+import 'package:blockchain_demo_flutter/pages/demos/block.dart';
 import 'package:blockchain_demo_flutter/pages/demos/hash_page.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class HomePageItemsProvider with ChangeNotifier {
         imagePath: Images.block,
         title: 'BLOCK',
         description: 'Mine a new block with given difficulty',
-        screenRoute: HashPage.routeName),
+        screenRoute: BlockPage.routeName),
   ];
 
   List<HomePageGridItem> get items => _items;

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../utils/crypto_things.dart';
 
 class HashPage extends StatefulWidget {
-  HashPage({Key? key}) : super(key: key);
+  const HashPage({Key? key}) : super(key: key);
 
   static const String routeName = '/hash';
 
