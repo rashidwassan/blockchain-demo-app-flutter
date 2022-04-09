@@ -15,7 +15,8 @@ class BlockchainDemo extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Blockchain Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: const Color(0xFF716b94),
+        primarySwatch: Colors.deepPurple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: const HomePage(),

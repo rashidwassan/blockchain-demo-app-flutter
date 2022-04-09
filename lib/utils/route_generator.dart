@@ -9,7 +9,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const HomePage());
 
       default:
-        return MaterialPageRoute(builder: ((context) => HomePage()));
+        return MaterialPageRoute(builder: ((context) => const HomePage()));
     }
   }
 }

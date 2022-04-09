@@ -12,6 +12,8 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   crypto: ^3.0.1
+  google_fonts: ^2.3.1
+  lottie: ^1.2.2
 
 dev_dependencies:
   flutter_test:
@@ -22,3 +24,6 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
+
+  assets:
+    - assets/anims/
