@@ -24,3 +24,12 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+class HomePageGridVew extends StatelessWidget {
+  const HomePageGridVew({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}

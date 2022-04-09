@@ -1,3 +1,4 @@
+import 'package:blockchain_demo_flutter/constants/themedata.dart';
 import 'package:blockchain_demo_flutter/pages/splash_screen.dart';
 import 'package:blockchain_demo_flutter/utils/route_generator.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +15,7 @@ class BlockchainDemo extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Blockchain Demo',
-      theme: ThemeData(
-        primaryColor: const Color(0xFF716b94),
-        primarySwatch: Colors.deepPurple,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: AppThemeData.theme,
       onGenerateRoute: RouteGenerator.generateRoute,
       initialRoute: SplashScreen.routeName,
     );
