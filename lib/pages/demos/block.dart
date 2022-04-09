@@ -66,14 +66,7 @@ class _HashPageState extends State<BlockPage> {
                 DataInputField(
                     title: 'Data',
                     controller: _contentController,
-                    onChanged: (value) {
-                      // setState(() {
-                      //   _hashWithNonce = CryptoUtils.getSHA256WithDifficulty(
-                      //     data: _contentController.text,
-                      //     difficulty: difficulty.toInt(),
-                      //   );
-                      // });
-                    }),
+                    onChanged: (value) {}),
                 const SizedBox(
                   height: 24,
                 ),
@@ -99,13 +92,20 @@ class _HashPageState extends State<BlockPage> {
                 Text(difficulty.toInt().toString()),
                 const Spacer(),
                 MaterialButton(
+                  minWidth: 180,
+                  height: 40,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)),
                   onPressed: getHash,
                   child: const Text(
                     'Mine',
                     style: TextStyle(color: Colors.white),
                   ),
                   color: Theme.of(context).primaryColor,
-                )
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
               ],
             ),
           ),
