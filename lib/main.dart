@@ -1,6 +1,6 @@
+import 'package:blockchain_demo_flutter/pages/splash_screen.dart';
+import 'package:blockchain_demo_flutter/utils/route_generator.dart';
 import 'package:flutter/material.dart';
-
-import '/pages/homepage.dart';
 
 void main() {
   runApp(const BlockchainDemo());
@@ -19,7 +19,8 @@ class BlockchainDemo extends StatelessWidget {
         primarySwatch: Colors.deepPurple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const HomePage(),
+      onGenerateRoute: RouteGenerator.generateRoute,
+      initialRoute: SplashScreen.routeName,
     );
   }
 }
