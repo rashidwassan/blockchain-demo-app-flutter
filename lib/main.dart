@@ -12,6 +12,7 @@ class BlockchainDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Blockchain Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
