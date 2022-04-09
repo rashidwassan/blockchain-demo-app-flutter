@@ -41,7 +41,7 @@ class _HashPageState extends State<BlockPage> {
     return Scaffold(
         appBar: AppBar(title: const Text('Block')),
         body: Padding(
-          padding: const EdgeInsets.all(24.0),
+          padding: const EdgeInsets.all(16.0),
           child: Center(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -82,6 +82,7 @@ class _HashPageState extends State<BlockPage> {
                     : MaterialButton(
                         minWidth: 180,
                         height: 40,
+                        elevation: 0,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8)),
                         onPressed: getHash,
@@ -112,14 +113,16 @@ class BlockCard extends StatelessWidget {
       duration: const Duration(milliseconds: 300),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).primaryColor.withAlpha(40),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             decoration: BoxDecoration(
-                color: Colors.teal, borderRadius: BorderRadius.circular(8)),
+                color: Colors.teal[300],
+                borderRadius: BorderRadius.circular(8)),
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
             child: Text(
               'Nonce: ${hashWithNonce.nonce.toString()}',
@@ -128,10 +131,10 @@ class BlockCard extends StatelessWidget {
                   fontWeight: FontWeight.bold, color: Colors.white),
             ),
           ),
-          const SizedBox(height: 24),
-          Text(
-            'Enter the content of the block',
-            style: Theme.of(context).textTheme.headline6,
+          const SizedBox(height: 16),
+          const Text(
+            'Data',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
           ),
           const SizedBox(height: 12),
           DataInputField(
@@ -139,9 +142,24 @@ class BlockCard extends StatelessWidget {
               controller: contentController,
               onChanged: (value) {}),
           const SizedBox(height: 24),
-          Text(
-            'Hash:\n${hashWithNonce.hash}',
-            textAlign: TextAlign.center,
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(width: 0.2, color: Colors.black)),
+            child: Column(
+              children: [
+                const Text(
+                  'Hash',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                SelectableText(
+                  hashWithNonce.hash,
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
           ),
         ],
       ),
