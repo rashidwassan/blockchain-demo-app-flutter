@@ -10,14 +10,16 @@ class HomePageGridTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: MaterialButton(
+      child: RawMaterialButton(
         onPressed: () {
           Navigator.of(context).pushNamed(item.screenRoute);
         },
         elevation: 4,
-        color: Colors.white,
+        animationDuration: const Duration(milliseconds: 100),
+        fillColor: Colors.white,
         splashColor: Theme.of(context).primaryColor.withOpacity(0.5),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        highlightElevation: 0,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -37,7 +39,7 @@ class HomePageGridTile extends StatelessWidget {
               Text(
                 item.description,
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 12),
+                style: const TextStyle(fontSize: 10),
               ),
             ],
           ),

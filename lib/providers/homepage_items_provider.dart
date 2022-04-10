@@ -1,5 +1,6 @@
 import 'package:blockchain_demo_flutter/models/homepage_grid_item.dart';
 import 'package:blockchain_demo_flutter/pages/demos/block.dart';
+import 'package:blockchain_demo_flutter/pages/demos/blockchain.dart';
 import 'package:blockchain_demo_flutter/pages/demos/hash_page.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,11 @@ class HomePageItemsProvider with ChangeNotifier {
         title: 'BLOCK',
         description: 'Mine a new block with given difficulty',
         screenRoute: BlockPage.routeName),
+    HomePageGridItem(
+        imagePath: Images.blockchainIcon,
+        title: 'BLOCKCHAIN',
+        description: 'Demonstration of working of a blockchain',
+        screenRoute: BlockChainDemoPage.routeName),
   ];
 
   List<HomePageGridItem> get items => _items;

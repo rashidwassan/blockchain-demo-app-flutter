@@ -1,3 +1,4 @@
+import 'package:blockchain_demo_flutter/pages/demos/blockchain.dart';
 import 'package:flutter/material.dart';
 
 import '/pages/demos/hash_page.dart';
@@ -16,6 +17,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const BlockPage());
       case HashPage.routeName:
         return MaterialPageRoute(builder: (_) => const HashPage());
+      case BlockChainDemoPage.routeName:
+        return MaterialPageRoute(builder: (_) => const BlockChainDemoPage());
 
       default:
         return MaterialPageRoute(builder: ((context) => const HomePage()));

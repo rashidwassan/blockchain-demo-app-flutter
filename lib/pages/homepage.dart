@@ -17,6 +17,13 @@ class HomePage extends StatelessWidget {
         padding: const EdgeInsets.all(24.0),
         child: Column(
           children: const [
+            Text(
+              'Demos',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 12,
+            ),
             HomePageGridVew(),
           ],
         ),
