@@ -41,7 +41,7 @@ class _HashPageState extends State<BlockPage> {
     return Scaffold(
         appBar: AppBar(title: const Text('Block')),
         body: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(24.0),
           child: Center(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -105,7 +105,7 @@ class BlockCard extends StatelessWidget {
       {Key? key, required this.contentController, required this.hashWithNonce})
       : super(key: key);
   final HashWithNonce hashWithNonce;
-  final TextEditingController contentController;
+  final TextEditingController? contentController;
 
   @override
   Widget build(BuildContext context) {
@@ -113,6 +113,7 @@ class BlockCard extends StatelessWidget {
       duration: const Duration(milliseconds: 300),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
+        border: Border.all(color: Colors.black, width: 0.2),
         color: Theme.of(context).primaryColor.withAlpha(40),
         borderRadius: BorderRadius.circular(12),
       ),
@@ -121,6 +122,7 @@ class BlockCard extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
+                border: Border.all(color: Colors.black, width: 0.5),
                 color: Colors.teal[300],
                 borderRadius: BorderRadius.circular(8)),
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
@@ -149,10 +151,14 @@ class BlockCard extends StatelessWidget {
                 border: Border.all(width: 0.2, color: Colors.black)),
             child: Column(
               children: [
-                const Text(
-                  'Hash',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                Row(
+                  children: const [
+                    Text(
+                      'Hash',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
                 ),
                 SelectableText(
                   hashWithNonce.hash,
