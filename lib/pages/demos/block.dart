@@ -1,10 +1,10 @@
-import 'package:blockchain_demo_flutter/components/data_input_fields.dart';
 import 'package:blockchain_demo_flutter/constants/images.dart';
-import 'package:blockchain_demo_flutter/models/hash_with_nonce.dart';
+import 'package:blockchain_demo_flutter/models/block.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../components/block_card.dart';
 import '../../utils/crypto_things.dart';
 
 class BlockPage extends StatefulWidget {
@@ -18,7 +18,7 @@ class BlockPage extends StatefulWidget {
 
 class _HashPageState extends State<BlockPage> {
   final TextEditingController _contentController = TextEditingController();
-  HashWithNonce _hashWithNonce = HashWithNonce('', 0);
+  Block? block;
   bool isCalculating = false;
   getHash() async {
     setState(() {
@@ -29,7 +29,14 @@ class _HashPageState extends State<BlockPage> {
       'difficulty': difficulty.toInt(),
     }).then((result) {
       setState(() {
-        _hashWithNonce = result;
+        block = Block(
+            hash: result.hash,
+            previousHash:
+                '0000000000000000000000000000000000000000000000000000000000000000',
+            data: 'Initial Data',
+            timestamp: TimeOfDay.now().toString(),
+            nonce: result.nonce);
+
         isCalculating = false;
       });
     });
@@ -47,8 +54,8 @@ class _HashPageState extends State<BlockPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 BlockCard(
-                    contentController: _contentController,
-                    hashWithNonce: _hashWithNonce),
+                  block: block,
+                ),
                 const Spacer(),
                 const Text(
                   'Difficulty Level',
@@ -97,78 +104,5 @@ class _HashPageState extends State<BlockPage> {
             ),
           ),
         ));
-  }
-}
-
-class BlockCard extends StatelessWidget {
-  const BlockCard(
-      {Key? key, required this.contentController, required this.hashWithNonce})
-      : super(key: key);
-  final HashWithNonce hashWithNonce;
-  final TextEditingController? contentController;
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 300),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.black, width: 0.2),
-        color: Theme.of(context).primaryColor.withAlpha(40),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.black, width: 0.5),
-                color: Colors.teal[300],
-                borderRadius: BorderRadius.circular(8)),
-            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
-            child: Text(
-              'Nonce: ${hashWithNonce.nonce.toString()}',
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                  fontWeight: FontWeight.bold, color: Colors.white),
-            ),
-          ),
-          const SizedBox(height: 16),
-          const Text(
-            'Data',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-          ),
-          const SizedBox(height: 12),
-          DataInputField(
-              title: 'Data',
-              controller: contentController,
-              onChanged: (value) {}),
-          const SizedBox(height: 24),
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(width: 0.2, color: Colors.black)),
-            child: Column(
-              children: [
-                Row(
-                  children: const [
-                    Text(
-                      'Hash',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-                SelectableText(
-                  hashWithNonce.hash,
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
   }
 }

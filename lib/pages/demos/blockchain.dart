@@ -1,5 +1,3 @@
-import 'package:blockchain_demo_flutter/models/hash_with_nonce.dart';
-import 'package:blockchain_demo_flutter/pages/demos/block.dart';
 import 'package:flutter/material.dart';
 
 class BlockChainDemoPage extends StatefulWidget {
@@ -24,18 +22,18 @@ class _BlockChainDemoPageState extends State<BlockChainDemoPage> {
           Expanded(
             child: ListView(
               children: [
-                BlockCard(
-                  contentController: null,
-                  hashWithNonce: HashWithNonce('', 1),
-                ),
-                BlockCard(
-                  contentController: null,
-                  hashWithNonce: HashWithNonce('', 1),
-                ),
-                BlockCard(
-                  contentController: null,
-                  hashWithNonce: HashWithNonce('', 1),
-                )
+                // BlockCard(
+                //   contentController: null,
+                //   hashWithNonce: HashWithNonce('', 1),
+                // ),
+                // BlockCard(
+                //   contentController: null,
+                //   hashWithNonce: HashWithNonce('', 1),
+                // ),
+                // BlockCard(
+                //   contentController: null,
+                //   hashWithNonce: HashWithNonce('', 1),
+                // )
               ],
             ),
           ),
