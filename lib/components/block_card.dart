@@ -9,6 +9,7 @@ class BlockCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isBlockDataAvailable = block != null;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       padding: const EdgeInsets.all(16),
@@ -27,7 +28,7 @@ class BlockCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8)),
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
             child: Text(
-              'Nonce: ${block!.nonce.toString()}',
+              isBlockDataAvailable ? 'Nonce: ${block!.nonce.toString()}' : "",
               textAlign: TextAlign.center,
               style: const TextStyle(
                   fontWeight: FontWeight.bold, color: Colors.white),
@@ -52,6 +53,7 @@ class BlockCard extends StatelessWidget {
             child: Column(
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
                     Text(
                       'Hash',
@@ -60,8 +62,11 @@ class BlockCard extends StatelessWidget {
                     ),
                   ],
                 ),
+                const SizedBox(
+                  height: 8,
+                ),
                 SelectableText(
-                  block!.hash,
+                  isBlockDataAvailable ? block!.hash : '',
                   textAlign: TextAlign.center,
                 ),
               ],
