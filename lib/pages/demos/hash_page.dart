@@ -45,10 +45,15 @@ class _HashPageState extends State<HashPage> {
                     border: Border.all(width: 0.2, color: Colors.black)),
                 child: Column(
                   children: [
-                    const Text(
-                      'Hash',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text(
+                          'Hash',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
                     ),
                     SelectableText(
                       '\n$hash',
