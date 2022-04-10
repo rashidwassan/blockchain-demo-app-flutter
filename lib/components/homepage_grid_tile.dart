@@ -14,6 +14,8 @@ class HomePageGridTile extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).pushNamed(item.screenRoute);
         },
+        focusElevation: 3,
+        hoverElevation: 3,
         elevation: 4,
         animationDuration: const Duration(milliseconds: 100),
         fillColor: Colors.white,
@@ -21,7 +23,7 @@ class HomePageGridTile extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         highlightElevation: 0,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(bottom: 8.0, left: 8, right: 8),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
